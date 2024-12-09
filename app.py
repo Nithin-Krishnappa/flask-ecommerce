@@ -26,8 +26,11 @@ class Product(db.Model):
 # Routes
 @app.route('/')
 def index():
-    products = Product.query.all()
-    return {'products': [{'id': p.id, 'name': p.name, 'price': p.price, 'description': p.description} for p in products]}
+    try:
+        products = Product.query.all()
+        return f"Found {len(products)} products"
+    except Exception as e:
+        return f"Error: {str(e)}"
 
 
 @app.route('/product/<int:product_id>')
