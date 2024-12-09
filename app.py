@@ -36,8 +36,7 @@ def index():
 @app.route('/product/<int:product_id>')
 def product_detail(product_id):
     product = Product.query.get_or_404(product_id)
-    return {'products': [{'id': p.id, 'name': p.name, 'price': p.price, 'description': p.description} for p in products]}
-
+    return render_template('product.html', product=product)
 @app.route('/add', methods=['GET', 'POST'])
 def add_product():
     if request.method == 'POST':
