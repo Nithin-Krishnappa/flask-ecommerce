@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
+from ecommerce import Product
 
 
 app = Flask(__name__)
@@ -13,9 +15,12 @@ password = 'Nz7jALs8WLp5rY62YsdVfSKo7sRWQG6V'
 app.config['SQLALCHEMY_DATABASE_URI'] = (
     f'postgresql+psycopg2://{username}:{password}@{hostname}:{port}/{database}'
 )
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+DATABASE_URI = 'postgresql://ecommerce_x3sw_user:Nz7jALs8WLp5rY62YsdVfSKo7sRWQG6V@dpg-ctbjlolds78s739c8f4g-a:5432/ecommerce_x3sw'
 
+# Set up the database connection
+engine = create_engine(DATABASE_URI)
+Session = sessionmaker(bind=engine)
+session = Session()
 # Database Models
 
 class Product(db.Model):
@@ -23,9 +28,8 @@ class Product(db.Model):
     name = db.Column(db.String(100), nullable=False)
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.String(200), nullable=True)
-from sqlalchemy import create_engine
-engine = create_engine(DATABASE_URI)
-Base.metadata.create_all(engine)
+
+
 # Routes
 @app.route('/')
 def index():
