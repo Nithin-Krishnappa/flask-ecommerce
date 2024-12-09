@@ -1,0 +1,24 @@
+# Exported from Render on 2024-12-09T20:33:04Z
+databases:
+- name: ecommerce
+  databaseName: ecommerce_x3sw
+  user: ecommerce_x3sw_user
+  plan: free
+  region: oregon
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
+services:
+- type: web
+  name: flask-ecommerce
+  runtime: python
+  repo: https://github.com/Nithin-Krishnappa/flask-ecommerce
+  plan: free
+  envVars:
+  - key: Nithin_123
+    sync: false
+  region: oregon
+  buildCommand: pip install -r requirements.txt
+  startCommand: gunicorn app:app
+version: "1"
