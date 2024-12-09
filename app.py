@@ -35,7 +35,7 @@ from model import Product
 def index():
     try:
         products = Product.query.all()
-        return render_template('index.html', products=products)
+        return render_template('templates/index.html', products=products)
     except Exception as e:
         return f"Error: {str(e)}"
 
@@ -43,7 +43,7 @@ def index():
 @app.route('/product/<int:product_id>')
 def product_detail(product_id):
     product = Product.query.get_or_404(product_id)
-    return render_template('product.html', product=product)
+    return render_template('templates/product.html', product=product)
 @app.route('/add', methods=['GET', 'POST'])
 def add_product():
     if request.method == 'POST':
@@ -53,8 +53,8 @@ def add_product():
         new_product = Product(name=name, price=float(price), description=description)
         db.session.add(new_product)
         db.session.commit()
-        return redirect(url_for('index'))
-    return render_template('add_product.html')
+        return redirect(url_for('templates/index'))
+    return render_template('templates/add_product.html')
 
 
 if __name__ == '__main__':
