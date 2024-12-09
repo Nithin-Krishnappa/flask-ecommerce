@@ -5,16 +5,7 @@ from ecommerce import Product
 
 
 app = Flask(__name__)
-hostname = 'dpg-ctbjlolds78s739c8f4g-a'
-port = 5432
-database = 'ecommerce_x3sw'
-username = 'ecommerce_x3sw_user'
-password = 'Nz7jALs8WLp5rY62YsdVfSKo7sRWQG6V'
 
-# Configure the database URI for SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = (
-    f'postgresql+psycopg2://{username}:{password}@{hostname}:{port}/{database}'
-)
 DATABASE_URI = 'postgresql://ecommerce_x3sw_user:Nz7jALs8WLp5rY62YsdVfSKo7sRWQG6V@dpg-ctbjlolds78s739c8f4g-a:5432/ecommerce_x3sw'
 
 # Set up the database connection
