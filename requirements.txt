@@ -4,3 +4,4 @@ psycopg2-binary==2.9.5
 gunicorn==20.1.0
 SQLAlchemy==2.0.12
 Werkzeug==2.2.2
+gunicorn -b 0.0.0.0:8000 app:app
