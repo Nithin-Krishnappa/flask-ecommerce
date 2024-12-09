@@ -36,4 +36,4 @@ def add_product():
     return render_template('add_product.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run()
