@@ -3,8 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
+hostname = 'dpg-ctbjlolds78s739c8f4g-a'
+port = 5432
+database = 'ecommerce_x3sw'
+username = 'ecommerce_x3sw_user'
+password = 'Nz7jALs8WLp5rY62YsdVfSKo7sRWQG6V'
+
+# Configure the database URI for SQLAlchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    f"postgresql://ecommerce_x3sw_user:Nz7jALs8WLp5rY62YsdVfSKo7sRWQG6V@dpg-ctbjlolds78s739c8f4g-a:5432/ecommerce_x3sw"
+    f'postgresql+psycopg2://{username}:{password}@{hostname}:{port}/{database}'
 )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -42,4 +49,4 @@ def add_product():
 
 
 if __name__ == '__main__':
-    app.run(host='dpg-ctbjlolds78s739c8f4g-a', port=5432)
+    app.run(debug=True)
