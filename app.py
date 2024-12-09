@@ -2,7 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://your_username:your_password@your_hostname:your_port/your_database'
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    f"postgresql://ecommerce_x3sw_user:Nz7jALs8WLp5rY62YsdVfSKo7sRWQG6V@dpg-ctbjlolds78s739c8f4g-a:5432/ecommerce_x3sw"
+)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -40,4 +42,4 @@ def add_product():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='dpg-ctbjlolds78s739c8f4g-a', port=5432)
