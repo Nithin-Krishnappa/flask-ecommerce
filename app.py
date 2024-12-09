@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ecommerce.db'
-app.config['SECRET_KEY'] = 'Nithin@123'
+app.config['SECRET_KEY'] = 'Nithin_123'
 db = SQLAlchemy(app)
 
 # Database Models
