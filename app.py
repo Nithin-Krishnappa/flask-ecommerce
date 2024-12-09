@@ -24,7 +24,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Disable SQLAlchemy event
 db = SQLAlchemy(app)
 
 # Import the Product model
-from ecommerce.model import Product
+from model import Product
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
