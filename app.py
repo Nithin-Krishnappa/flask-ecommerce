@@ -17,12 +17,15 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # Database Models
+
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.String(200), nullable=True)
-
+from sqlalchemy import create_engine
+engine = create_engine(DATABASE_URI)
+Base.metadata.create_all(engine)
 # Routes
 @app.route('/')
 def index():
