@@ -1,0 +1,19 @@
+# Exported from Render on 2024-12-09T20:41:17Z
+databases:
+- name: ecommerce-crgj
+  databaseName: ecommerce_x3sw_8cv0
+  user: ecommerce_x3sw_user
+  plan: free
+  region: oregon
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
+services:
+- type: web
+  name: flask-ecommerce-1
+  runtime: static
+  repo: https://github.com/Nithin-Krishnappa/flask-ecommerce
+  buildCommand: pip install -r requirements.txt
+  staticPublishPath: templates
+version: "1"
