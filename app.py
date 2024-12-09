@@ -36,6 +36,4 @@ def add_product():
     return render_template('add_product.html')
 
 if __name__ == '__main__':
-    with app.app_context():  # Ensure you are in the application context
-        db.create_all()  # Initialize the database
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8000)
