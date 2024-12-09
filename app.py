@@ -28,7 +28,7 @@ class Product(db.Model):
 def index():
     try:
         products = Product.query.all()
-        return f"Found {len(products)} products"
+        return render_template('index.html', products=products)
     except Exception as e:
         return f"Error: {str(e)}"
 
