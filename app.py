@@ -7,14 +7,15 @@ from sqlalchemy import create_engine
 
 
 app = Flask(__name__)
-# Replace these placeholders with your actual database credentials
-hostname = 'dpg-ctbjlolds78s739c8f4g-a'
-port = 5432
-database = 'ecommerce_x3sw'
-username = 'ecommerce_x3sw_user'
-password = 'Nz7jALs8WLp5rY62YsdVfSKo7sRWQG6V'
 
-# Database configuration with provided credentials
+# Database configuration with hardcoded values
+HOSTNAME = 'dpg-ctbjlolds78s739c8f4g-a'
+PORT = 5432
+DATABASE = 'ecommerce_x3sw'
+USERNAME = 'ecommerce_x3sw_user'
+PASSWORD = 'Nz7jALs8WLp5rY62YsdVfSKo7sRWQG6V'
+
+# Database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = (
     f'postgresql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}'
 )
