@@ -17,13 +17,13 @@ class Product(db.Model):
 @app.route('/')
 def index():
     products = Product.query.all()
-     return render_template('index.html', products=products)
+     return render_template('index.html')
 
 
 @app.route('/product/<int:product_id>')
 def product_detail(product_id):
     product = Product.query.get_or_404(product_id)
-    return render_template('product.html', product=product)
+    return render_template('product.html')
 
 
 @app.route('/add', methods=['GET', 'POST'])
