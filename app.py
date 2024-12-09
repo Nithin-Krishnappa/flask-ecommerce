@@ -21,7 +21,7 @@ class Product(db.Model):
 def index():
     products = Product.query.all()
     return render_template('index.html',{'products': [{'id': p.id, 'name': p.name, 'price': p.price, 'description': p.description} for p in products]})
-)
+
 
 
 @app.route('/product/<int:product_id>')
