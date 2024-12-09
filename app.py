@@ -17,12 +17,13 @@ class Product(db.Model):
 @app.route('/')
 def index():
     products = Product.query.all()
-    return redirect(url_for('index'))
+     return render_template('index.html', products=products)
+
 
 @app.route('/product/<int:product_id>')
 def product_detail(product_id):
     product = Product.query.get_or_404(product_id)
-    return redirect(url_for('product'))
+    return render_template('product.html', product=product)
 
 
 @app.route('/add', methods=['GET', 'POST'])
@@ -34,10 +35,9 @@ def add_product():
         new_product = Product(name=name, price=float(price), description=description)
         db.session.add(new_product)
         db.session.commit()
-        return redirect(url_for('home'))
-
-    return redirect(url_for('addproduct'))
+        return redirect(url_for('index'))
+    return render_template('add_product.html')
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(debug=True)
