@@ -2,19 +2,29 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from model import db
+
 
 
 
 app = Flask(__name__)
+# Replace these placeholders with your actual database credentials
+hostname = 'dpg-ctbjlolds78s739c8f4g-a'
+port = 5432
+database = 'ecommerce_x3sw'
+username = 'ecommerce_x3sw_user'
+password = 'Nz7jALs8WLp5rY62YsdVfSKo7sRWQG6V'
 
-DATABASE_URI = 'postgresql://ecommerce_x3sw_user:Nz7jALs8WLp5rY62YsdVfSKo7sRWQG6V@dpg-ctbjlolds78s739c8f4g-a:5432/ecommerce_x3sw'
+# Database configuration with provided credentials
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    f'postgresql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DATABASE}'
+)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Disable SQLAlchemy event system for better performance
 
-# Set up the database connection
-engine = create_engine(DATABASE_URI)
-Session = sessionmaker(bind=engine)
-session = Session()
-# Database Models
+# Initialize SQLAlchemy
+db = SQLAlchemy(app)
+
+# Import the Product model
+from ecommerce.model import Product
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
